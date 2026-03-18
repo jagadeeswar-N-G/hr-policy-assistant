@@ -3,6 +3,9 @@
 A production-grade internal HR chatbot that answers employee questions about company leave policies using a two-tier AI pipeline: a rule-based **Wisdom Tree** for instant L1 answers and a **LangChain RAG** pipeline backed by Claude for deeper queries.
 
 ---
+##system Design
+
+<img width="1037" height="581" alt="image" src="https://github.com/user-attachments/assets/47966a9a-f37c-476d-93ce-52c1fc8d5606" />
 
 ## Architecture
 
