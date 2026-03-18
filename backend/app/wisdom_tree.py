@@ -6,10 +6,7 @@ instant, deterministic answers with zero latency and no API cost.
 
 from __future__ import annotations
 
-# ---------------------------------------------------------------------------
-# L1 Knowledge Base
-# Each key is a lowercase keyword/phrase to match; value is the markdown answer.
-# ---------------------------------------------------------------------------
+
 WISDOM_TREE: dict[str, str] = {
     "how many paid leave": (
         "Employees are entitled to **20 days** of paid leave per year. "

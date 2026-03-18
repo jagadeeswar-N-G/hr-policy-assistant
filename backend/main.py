@@ -21,9 +21,7 @@ from app.config import settings
 from app.policy_store import get_retriever
 from app.router import router
 
-# ---------------------------------------------------------------------------
-# Logging
-# ---------------------------------------------------------------------------
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(name)s  —  %(message)s",
@@ -32,9 +30,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ---------------------------------------------------------------------------
-# Lifespan: build vector store on startup
-# ---------------------------------------------------------------------------
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):  # type: ignore[type-arg]
     logger.info("=== HR Policy Assistant starting up ===")
@@ -45,9 +41,7 @@ async def lifespan(app: FastAPI):  # type: ignore[type-arg]
     logger.info("=== HR Policy Assistant shutting down ===")
 
 
-# ---------------------------------------------------------------------------
-# App
-# ---------------------------------------------------------------------------
+
 app = FastAPI(
     title="HR Policy Assistant API",
     description=(
@@ -68,9 +62,7 @@ app.add_middleware(
 )
 
 
-# ---------------------------------------------------------------------------
-# Request-logging middleware
-# ---------------------------------------------------------------------------
+
 @app.middleware("http")
 async def log_requests(request: Request, call_next) -> Response:  # type: ignore[return]
     req_id = str(uuid.uuid4())[:8]
@@ -90,7 +82,5 @@ async def log_requests(request: Request, call_next) -> Response:  # type: ignore
     return response
 
 
-# ---------------------------------------------------------------------------
-# Mount router under /api prefix
-# ---------------------------------------------------------------------------
+
 app.include_router(router, prefix="/api")

@@ -18,9 +18,6 @@ from app.config import settings
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Full policy document text — single source of truth
-# ---------------------------------------------------------------------------
 POLICY_TEXT: str = """
 COMPANY LEAVE POLICY — v1.0
 
@@ -86,9 +83,6 @@ def _build_vector_store() -> VectorStoreRetriever:
     return vectorstore.as_retriever(search_kwargs={"k": settings.retriever_k})
 
 
-# ---------------------------------------------------------------------------
-# Module-level singleton — built once, reused across all requests
-# ---------------------------------------------------------------------------
 _retriever_singleton: VectorStoreRetriever | None = None
 
 

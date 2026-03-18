@@ -19,9 +19,7 @@ from app.config import settings
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Prompt
-# ---------------------------------------------------------------------------
+
 HR_PROMPT_TEMPLATE = """You are an internal HR policy assistant for a company.
 Answer questions accurately and concisely based ONLY on the provided policy context below.
 If the answer is not explicitly covered in the context, respond with exactly:

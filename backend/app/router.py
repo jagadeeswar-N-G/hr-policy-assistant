@@ -20,9 +20,7 @@ from app.rag_chain import build_rag_chain, run_rag_query
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-# ---------------------------------------------------------------------------
-# Lazy-initialise the RAG chain once (after the vector store is ready)
-# ---------------------------------------------------------------------------
+
 _rag_chain = None
 
 
@@ -34,9 +32,6 @@ def _get_rag_chain():
     return _rag_chain
 
 
-# ---------------------------------------------------------------------------
-# Routes
-# ---------------------------------------------------------------------------
 
 
 @router.get("/health", response_model=HealthResponse, tags=["System"])
@@ -70,7 +65,6 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
     logger.info("[session=%s] Question: %s", request.session_id, question[:120])
 
-    # ---- Tier 1: Wisdom Tree ----
     wt_answer = wisdom_tree_lookup(question)
     if wt_answer:
         logger.info("[session=%s] Wisdom Tree hit", request.session_id)
@@ -81,7 +75,6 @@ async def chat(request: ChatRequest) -> ChatResponse:
             sources=[],
         )
 
-    # ---- Tier 2: RAG ----
     try:
         chain = _get_rag_chain()
         rag_result = await run_rag_query(chain, question)

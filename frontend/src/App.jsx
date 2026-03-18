@@ -36,16 +36,13 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-bg text-slate-200 overflow-hidden">
-      {/* Sidebar */}
       <Sidebar
         onTopicClick={handleTopicClick}
         isOpen={sidebarOpen}
         onToggle={() => setSidebarOpen((v) => !v)}
       />
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Header */}
         <header className="flex items-center justify-between px-4 py-3 border-b border-border bg-surface flex-shrink-0">
           <div className="flex items-center gap-3">
             <button
@@ -90,7 +87,6 @@ export default function App() {
           </div>
         </header>
 
-        {/* Chat area */}
         <ChatWindow
           messages={messages}
           isLoading={isLoading}
