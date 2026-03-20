@@ -1,6 +1,6 @@
 # HR Policy Internal Assistant
 
-A production-grade internal HR chatbot that answers employee questions about company leave policies using a two-tier AI pipeline: a rule-based **Wisdom Tree** for instant L1 answers and a **LangChain RAG** pipeline backed by Claude for deeper queries.
+A production-grade internal HR chatbot that answers employee questions about company leave policies using a two-tier AI pipeline: a rule-based **Wisdom Tree** for instant L1 answers and a **LangChain RAG** pipeline backed by Openai for deeper queries.
 
 ---
 ##system Design
